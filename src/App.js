@@ -7,7 +7,7 @@ function App() {
 
   return (
     <div className="App">
-      <Dropdown list={select}/>
+      <Dropdown list={select} dropdownSelected={'ssss'} />
     </div>
   );
 }

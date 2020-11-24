@@ -7,6 +7,7 @@ export default class Dropdown extends React.Component {
         super(props)
         this.state = {
             dropdownOpen: false,
+            selectedValue: this.props.dropdownSelected,
         }
     }
     toggleButton = () => {
@@ -17,10 +18,18 @@ export default class Dropdown extends React.Component {
         });
     }
 
+    onSelectValue = (e) => {
+        this.setState(state => {
+            return {
+                selectedValue: e,
+            }
+        });
+    }
+
     render() {
         return (
             <div className="dropdown">
-                {this.state.dropdownOpen && <DropdownList list={this.props.list}/>}
+                {this.state.dropdownOpen && <DropdownList list={this.props.list} selected={this.state.selectedValue} onSelect={this.onSelectValue}/>}
                 <DropdownButton onDropdownToggle={this.toggleButton}/>
             </div>
         )

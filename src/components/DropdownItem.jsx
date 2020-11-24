@@ -1,16 +1,12 @@
 import React from 'react';
 
 export default class DropdownItem extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     clickToSelect = (e) => {
-        this.props.onSelect(e.target.innerText);
+        return () => { this.props.onSelect(e); }
     }
-
     render() {
         return (
-            <li onClick={this.clickToSelect}>{this.props.item}</li>
+            <li onClick={this.clickToSelect(this.props.item)}>{this.props.item}</li>
         )
     }
 }
